@@ -23,21 +23,28 @@ import com.projetointegrador.Ecommerce.repository.CategoriaRepository;
 	
 
 
-
+	//Anotação da classe como Controller
 	@RestController
+	
+	//Anotação para mapear a URL
 	@RequestMapping("/categoria")
+	
+	//Anotação para receber todos tipos de parâmetros 
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
 
 	public class CategoriaController {
-
+		
+		//Anotação para inclusão das dependências
 		@Autowired
 		private CategoriaRepository repository;
 		
+		//Método para buscar todas informações 
 		@GetMapping
 		public ResponseEntity<List<Categoria>> GetAll(){
 			return ResponseEntity.ok(repository.findAll());
 		}
-
+		
+		//Método para buscar pelo ID
 		@GetMapping("/id/{id}")
 		public ResponseEntity<Categoria> GetById(@PathVariable long id){
 			return repository.findById(id)
@@ -46,31 +53,33 @@ import com.projetointegrador.Ecommerce.repository.CategoriaRepository;
 		}
 		
 		
-		
+		//Método para buscar pelo Nome
 		@GetMapping("/nome/{nome}")
 		public ResponseEntity<List<Categoria>> GetByNome(@PathVariable String nome){
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 		}
 		
-		
+		//Método para buscar pelo Tipo
 		@GetMapping("/tipo/{tipo}")
 		public ResponseEntity<List<Categoria>> GetByTipo(@PathVariable String tipo){
 		return ResponseEntity.ok(repository.findAllByTipoContainingIgnoreCase(tipo));
 		}
 		
 		
-		
+		//Método para incluir dados
 		@PostMapping
 		public ResponseEntity<Categoria> post (@RequestBody Categoria categoria){
 			return ResponseEntity.status(HttpStatus.CREATED)
 					.body(repository.save(categoria));
 		}
 
+		//Método para atualizar dados já existente 
 		@PutMapping
 		public ResponseEntity<Categoria> put (@RequestBody Categoria categoria){
 			return ResponseEntity.ok(repository.save(categoria));				
 		}
 		
+		//Método para deletar dados 
 		@DeleteMapping("/{id}")
 		public void delete(@PathVariable long id) {
 			repository.deleteById(id);

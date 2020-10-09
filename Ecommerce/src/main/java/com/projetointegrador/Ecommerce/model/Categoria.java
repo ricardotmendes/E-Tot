@@ -1,5 +1,14 @@
 package com.projetointegrador.Ecommerce.model;
 
+//Nossa tabela de "Categoria" serve para classificar os cursos por nome e tipo deles, podendo assim 
+//gerar vários tipos e categorizá-los de formas diversas
+//Ex: 
+//Nome: Curso de Java
+//Tipo: Programação
+//Presencial: Se o curso é presencial ou EAD
+
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +25,8 @@ public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	//
 	
 	@NotNull
 	@Size(min = 2, max = 255)
