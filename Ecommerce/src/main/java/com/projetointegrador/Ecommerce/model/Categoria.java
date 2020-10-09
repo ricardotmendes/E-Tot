@@ -15,48 +15,50 @@ import javax.validation.constraints.Size;
 public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idCategoria;
+	private long id;
 	
 	@NotNull
 	@Size(min = 2, max = 255)
-	private String NomeCategoria;
+	private String nome;
 	
 	@NotNull
 	@Size(min = 2, max = 255)
-	private String TipoCategoria;
+	private String tipo;
 	
-	private boolean PresencialEAD;
+	private boolean presencial;
 
-	public long getIdCategoria() {
-		return idCategoria;
+	public long getId() {
+		return id;
 	}
 
-	public void setIdCategoria(long idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public String getNomeCategoria() {
-		return NomeCategoria;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeCategoria(String nomeCategoria) {
-		NomeCategoria = nomeCategoria;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getTipoCategoria() {
-		return TipoCategoria;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setTipoCategoria(String tipoCategoria) {
-		TipoCategoria = tipoCategoria;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
-	public boolean isPresencialEAD() {
-		return PresencialEAD;
+	public boolean isPresencial() {
+		return presencial;
 	}
 
-	public void setPresencialEAD(boolean presencialEAD) {
-		PresencialEAD = presencialEAD;
+	public void setPresencial(boolean presencial) {
+		this.presencial = presencial;
 	}
+
+	
 	
 }
