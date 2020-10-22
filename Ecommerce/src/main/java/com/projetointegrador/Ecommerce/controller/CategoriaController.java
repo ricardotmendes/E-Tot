@@ -25,13 +25,10 @@ package com.projetointegrador.Ecommerce.controller;
 
 	//Anotação da classe como Controller
 	@RestController
-	
 	//Anotação para mapear a URL
 	@RequestMapping("/categoria")
-	
 	//Anotação para receber todos tipos de parâmetros 
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
-
 	public class CategoriaController {
 		
 		//Anotação para inclusão das dependências

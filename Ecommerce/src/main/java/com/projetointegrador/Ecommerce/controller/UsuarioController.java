@@ -26,15 +26,11 @@ import com.projetointegrador.Ecommerce.service.UsuarioService;
 
 //Anotação da classe como Controller
 @RestController
-
 //Anotação para mapear a URL
 @RequestMapping("/usuario")
-
 //Anotação para receber todos tipos de parâmetros 
 //@CrossOrigin(origins = "*", allowedHeaders = "*")
-
 @CrossOrigin("*")
-
 public class UsuarioController {
 	
 	@Autowired

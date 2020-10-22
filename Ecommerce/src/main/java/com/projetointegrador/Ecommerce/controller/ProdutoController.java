@@ -23,10 +23,8 @@ import com.projetointegrador.Ecommerce.repository.ProdutoRepository;
 
 //Anotação da classe como Controller
 @RestController
-
 //Anotação para mapear a URL
 @RequestMapping("/produto")
-
 //Anotação para receber todos tipos de parâmetros 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 
