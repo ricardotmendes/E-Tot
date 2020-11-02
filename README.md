@@ -26,7 +26,7 @@ Escolhemos como nosso mascote e patrono o deus egípcio da Sabedoria, Thoth, poi
 
 ### Documentação Completa ###
 - [Back-end](_link_documentação_backend)
-- [Back-end](link_documentação_link_frontend)
+- [Front-end](link_documentação_link_frontend)
 
 ![][tot]
 
