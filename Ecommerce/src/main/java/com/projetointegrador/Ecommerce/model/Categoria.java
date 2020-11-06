@@ -1,5 +1,9 @@
 package com.projetointegrador.Ecommerce.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+
 //Nossa tabela de "Categoria" serve para classificar os cursos por nome e tipo deles, podendo assim 
 //gerar vários tipos e categorizá-los de formas diversas
 //Ex: 
@@ -13,7 +17,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -43,9 +47,10 @@ public class Categoria {
 	private boolean presencial;
 
 	
-	@ManyToOne
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")
-	private Produto produto;
+	private List<Produto> produto;
+	
 	
 	
 	
@@ -82,13 +87,16 @@ public class Categoria {
 		this.presencial = presencial;
 	}
 
-	public Produto getProduto() {
+	public List<Produto> getProduto() {
 		return produto;
 	}
 
-	public void setProduto(Produto produto) {
+	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
+
+
+
 	
 	
 }

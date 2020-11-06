@@ -5,6 +5,7 @@ package com.projetointegrador.Ecommerce.repository;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -15,7 +16,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	//Método importado de buscar por "Nome"  
 
 	public List <Usuario> findAllByNomeContainingIgnoreCase (String nome);
-	
+	public Optional<Usuario> findByUsuarioAndSenha(String usuario, String senha);
+	public Optional<Usuario> findByUsuario(String usuario);
 	
 		
 }

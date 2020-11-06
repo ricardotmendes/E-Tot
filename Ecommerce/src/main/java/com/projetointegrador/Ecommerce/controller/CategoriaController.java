@@ -25,13 +25,10 @@ package com.projetointegrador.Ecommerce.controller;
 
 	//Anotação da classe como Controller
 	@RestController
-	
 	//Anotação para mapear a URL
 	@RequestMapping("/categoria")
-	
 	//Anotação para receber todos tipos de parâmetros 
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
-
 	public class CategoriaController {
 		
 		//Anotação para inclusão das dependências
@@ -68,20 +65,20 @@ package com.projetointegrador.Ecommerce.controller;
 		
 		//Método para incluir dados
 		@PostMapping
-		public ResponseEntity<Categoria> post (@RequestBody Categoria categoria){
+		public ResponseEntity<Categoria> postCategoria (@RequestBody Categoria categoria){
 			return ResponseEntity.status(HttpStatus.CREATED)
 					.body(repository.save(categoria));
 		}
 
 		//Método para atualizar dados já existente 
 		@PutMapping
-		public ResponseEntity<Categoria> put (@RequestBody Categoria categoria){
+		public ResponseEntity<Categoria> putCategoria (@RequestBody Categoria categoria){
 			return ResponseEntity.ok(repository.save(categoria));				
 		}
 		
 		//Método para deletar dados 
 		@DeleteMapping("/{id}")
-		public void delete(@PathVariable long id) {
+		public void deleteId(@PathVariable long id) {
 			repository.deleteById(id);
 		}
 	

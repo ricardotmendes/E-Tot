@@ -23,10 +23,8 @@ import com.projetointegrador.Ecommerce.repository.ProdutoRepository;
 
 //Anotação da classe como Controller
 @RestController
-
 //Anotação para mapear a URL
 @RequestMapping("/produto")
-
 //Anotação para receber todos tipos de parâmetros 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 
@@ -38,13 +36,13 @@ public class ProdutoController {
 	
 	//Método para buscar todas informações 
 	@GetMapping
-	public ResponseEntity<List<Produto>> GetAll(){
+	public ResponseEntity<List<Produto>> getAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	//Método para buscar pelo ID
 	@GetMapping("/id/{id}")
-	public ResponseEntity<Produto> GetById(@PathVariable long id){
+	public ResponseEntity<Produto> getById(@PathVariable long id){
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
@@ -61,20 +59,20 @@ public class ProdutoController {
 	
 	//Método para incluir dados
 	@PostMapping
-	public ResponseEntity<Produto> post (@RequestBody Produto produto){
+	public ResponseEntity<Produto> postProduto (@RequestBody Produto produto){
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(repository.save(produto));
 	}
 
 	//Método para atualizar dados já existente 
 	@PutMapping
-	public ResponseEntity<Produto> put (@RequestBody Produto produto){
+	public ResponseEntity<Produto> putProduto (@RequestBody Produto produto){
 		return ResponseEntity.ok(repository.save(produto));				
 	}
 	
 	//Método para deletar dados 
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable long id) {
+	public void deleteId(@PathVariable long id) {
 		repository.deleteById(id);
 	}
 
