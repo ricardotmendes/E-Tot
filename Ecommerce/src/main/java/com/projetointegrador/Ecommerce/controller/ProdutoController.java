@@ -22,29 +22,33 @@ import com.projetointegrador.Ecommerce.repository.ProdutoRepository;
 
 
 //Anotação da classe como Controller
+//
 @RestController
-
 //Anotação para mapear a URL
+//Toda vez que tiver acesso ao /produto será chamado essa classe
 @RequestMapping("/produto")
-
 //Anotação para receber todos tipos de parâmetros 
+//Vai aceitar o front end de qualquer origem
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 
 public class ProdutoController {
 	
 	//Anotação para inclusão das dependências
+	//Onde inserimos o repositorio nessa classe
 	@Autowired
 	private ProdutoRepository repository;
 	
 	//Método para buscar todas informações 
+	//Buscar por todos os produtos
 	@GetMapping
-	public ResponseEntity<List<Produto>> GetAll(){
+	public ResponseEntity<List<Produto>> getAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	//Método para buscar pelo ID
-	@GetMapping("/id/{id}")
-	public ResponseEntity<Produto> GetById(@PathVariable long id){
+	//Faz a busca do produto pelo Id ou caso não encontre deixa a mensagem notfound(não encontrado)
+	@GetMapping("/{id}")
+	public ResponseEntity<Produto> getById(@PathVariable long id){
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
@@ -52,6 +56,7 @@ public class ProdutoController {
 	
 	
 	//Método para buscar pela descrição do produto
+	//Faz a busca do produto pelo nome 	
 	@GetMapping("/nome/{nome}")
 	public ResponseEntity<List<Produto>> findAllDescricao(@PathVariable String nome){
 	return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
@@ -60,21 +65,24 @@ public class ProdutoController {
 	
 	
 	//Método para incluir dados
+	//Incluir um novo produto no banco de dados
 	@PostMapping
-	public ResponseEntity<Produto> post (@RequestBody Produto produto){
+	public ResponseEntity<Produto> postProduto (@RequestBody Produto produto){
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(repository.save(produto));
 	}
 
 	//Método para atualizar dados já existente 
+	//Atualiza as informações de um produto ja exitente no banco de dados
 	@PutMapping
-	public ResponseEntity<Produto> put (@RequestBody Produto produto){
+	public ResponseEntity<Produto> putProduto (@RequestBody Produto produto){
 		return ResponseEntity.ok(repository.save(produto));				
 	}
 	
 	//Método para deletar dados 
+	//excluir um produto do banco de dados
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable long id) {
+	public void deleteId(@PathVariable long id) {
 		repository.deleteById(id);
 	}
 

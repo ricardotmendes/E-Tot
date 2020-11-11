@@ -24,28 +24,31 @@ package com.projetointegrador.Ecommerce.controller;
 
 
 	//Anotação da classe como Controller
+	
 	@RestController
-	
 	//Anotação para mapear a URL
+	//Toda vez que tiver acesso ao /categoria será chamado essa classe
 	@RequestMapping("/categoria")
-	
 	//Anotação para receber todos tipos de parâmetros 
+	//Vai aceitar o front end de qualquer origem
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
-
 	public class CategoriaController {
 		
 		//Anotação para inclusão das dependências
+		//Onde inserimos o repositorio nessa classe
 		@Autowired
 		private CategoriaRepository repository;
 		
 		//Método para buscar todas informações 
+		//Buscar por todas as categorias
 		@GetMapping
 		public ResponseEntity<List<Categoria>> GetAll(){
 			return ResponseEntity.ok(repository.findAll());
 		}
 		
 		//Método para buscar pelo ID
-		@GetMapping("/id/{id}")
+		//Faz a busca da categoria pelo Id ou caso não encontre deixa a mensagem notfound(não encontrado)
+		@GetMapping("/{id}")
 		public ResponseEntity<Categoria> GetById(@PathVariable long id){
 			return repository.findById(id)
 					.map(resp -> ResponseEntity.ok(resp))
@@ -53,35 +56,35 @@ package com.projetointegrador.Ecommerce.controller;
 		}
 		
 		
-		//Método para buscar pelo Nome
-		@GetMapping("/nome/{nome}")
-		public ResponseEntity<List<Categoria>> GetByNome(@PathVariable String nome){
-		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
+		//Método para buscar pelo nome
+		//Faz a busca da categoria pelo titulo 	
+		@GetMapping("/titulo/{titulo}")
+		public ResponseEntity<List<Categoria>> GetByTitulo(@PathVariable String titulo){
+		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
 		}
 		
-		//Método para buscar pelo Tipo
-		@GetMapping("/tipo/{tipo}")
-		public ResponseEntity<List<Categoria>> GetByTipo(@PathVariable String tipo){
-		return ResponseEntity.ok(repository.findAllByTipoContainingIgnoreCase(tipo));
-		}
+
 		
 		
 		//Método para incluir dados
+		//Incluir uma nova categoria no banco de dados
 		@PostMapping
-		public ResponseEntity<Categoria> post (@RequestBody Categoria categoria){
+		public ResponseEntity<Categoria> postCategoria (@RequestBody Categoria categoria){
 			return ResponseEntity.status(HttpStatus.CREATED)
 					.body(repository.save(categoria));
 		}
 
-		//Método para atualizar dados já existente 
+		//Método para atualizar dados já existente
+		//Atualiza as informações de uma categoria ja exitente no banco de dados
 		@PutMapping
-		public ResponseEntity<Categoria> put (@RequestBody Categoria categoria){
+		public ResponseEntity<Categoria> putCategoria (@RequestBody Categoria categoria){
 			return ResponseEntity.ok(repository.save(categoria));				
 		}
 		
 		//Método para deletar dados 
+		//excluir uma categoria do banco de dados
 		@DeleteMapping("/{id}")
-		public void delete(@PathVariable long id) {
+		public void deleteId(@PathVariable long id) {
 			repository.deleteById(id);
 		}
 	
