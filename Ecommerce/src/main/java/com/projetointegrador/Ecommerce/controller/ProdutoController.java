@@ -41,7 +41,7 @@ public class ProdutoController {
 	}
 	
 	//Método para buscar pelo ID
-	@GetMapping("/id/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Produto> getById(@PathVariable long id){
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.ok(resp))

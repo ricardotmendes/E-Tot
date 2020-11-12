@@ -46,7 +46,7 @@ public Optional<Usuario> CadastrarUsuario(Usuario usuario) {
 				String authHeader = "Basic " + new String(encodedAuth);
 
 				user.get().setToken(authHeader);				
-				user.get().setUsuario(usuario.get().getNome());
+				user.get().setUsuario(usuario.get().getUsuario());
 				user.get().setSenha(usuario.get().getSenha());
 
 				return user;

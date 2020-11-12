@@ -19,18 +19,22 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	//
-	
+		
 	@NotNull
 	@Size(min = 2, max = 255)
 	private String nome;
 	
+
 	@NotNull
 	private float duracao;
 	
 	@NotNull
 	@Size(min = 2, max = 255)
 	private String professor;
+	
+	@NotNull
+	@Size(min = 2, max = 255)
+	private String descricao;
 
 
 	@ManyToOne
@@ -56,9 +60,9 @@ public class Produto {
 	public float getDuracao() {
 		return duracao;
 	}
-
+	
 	public void setDuracao(float duracao) {
-		this.duracao = duracao;
+	this.duracao = duracao;
 	}
 
 	public String getProfessor() {
@@ -67,6 +71,16 @@ public class Produto {
 
 	public void setProfessor(String professor) {
 		this.professor = professor;
+	}
+	
+	
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public Categoria getCategoria() {

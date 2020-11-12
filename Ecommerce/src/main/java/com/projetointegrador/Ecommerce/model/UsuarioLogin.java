@@ -3,8 +3,6 @@ package com.projetointegrador.Ecommerce.model;
 public class UsuarioLogin {
 
 	
-	
-	
 	private String usuario;
 	
 	private String senha;

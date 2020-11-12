@@ -27,76 +27,57 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 
-@Entity
-@Table(name = "tb_Categoria")
-public class Categoria {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	@Entity
+	@Table(name = "tb_Categoria")
+	public class Categoria {
+		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		private long id;
+		
+		//
+		
+		@NotNull
+		@Size(min = 2, max = 255)
+		private String titulo;
+		
 	
-	//
+		
+		@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+		@JsonIgnoreProperties("categoria")
+		private List<Produto> produto;
+		
+		
+		
+		
 	
-	@NotNull
-	@Size(min = 2, max = 255)
-	private String nome;
+		public long getId() {
+			return id;
+		}
 	
-	@NotNull
-	@Size(min = 2, max = 255)
-	private String tipo;
+		public void setId(long id) {
+			this.id = id;
+		}
 	
-	private boolean presencial;
+	
+	
+		public String getTitulo() {
+			return titulo;
+		}
 
-	
-	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("categoria")
-	private List<Produto> produto;
-	
-	
-	
-	
+		public void setTitulo(String titulo) {
+			this.titulo = titulo;
+		}
 
-	public long getId() {
-		return id;
+		public List<Produto> getProduto() {
+			return produto;
+		}
+	
+		public void setProduto(List<Produto> produto) {
+			this.produto = produto;
+		}
+	
+	
+	
+		
+		
 	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
-	public boolean isPresencial() {
-		return presencial;
-	}
-
-	public void setPresencial(boolean presencial) {
-		this.presencial = presencial;
-	}
-
-	public List<Produto> getProduto() {
-		return produto;
-	}
-
-	public void setProduto(List<Produto> produto) {
-		this.produto = produto;
-	}
-
-
-
-	
-	
-}

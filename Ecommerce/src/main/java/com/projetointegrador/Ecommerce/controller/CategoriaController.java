@@ -42,7 +42,7 @@ package com.projetointegrador.Ecommerce.controller;
 		}
 		
 		//Método para buscar pelo ID
-		@GetMapping("/id/{id}")
+		@GetMapping("/{id}")
 		public ResponseEntity<Categoria> GetById(@PathVariable long id){
 			return repository.findById(id)
 					.map(resp -> ResponseEntity.ok(resp))
@@ -51,16 +51,12 @@ package com.projetointegrador.Ecommerce.controller;
 		
 		
 		//Método para buscar pelo Nome
-		@GetMapping("/nome/{nome}")
-		public ResponseEntity<List<Categoria>> GetByNome(@PathVariable String nome){
-		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
+		@GetMapping("/titulo/{titulo}")
+		public ResponseEntity<List<Categoria>> GetByTitulo(@PathVariable String titulo){
+		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
 		}
 		
-		//Método para buscar pelo Tipo
-		@GetMapping("/tipo/{tipo}")
-		public ResponseEntity<List<Categoria>> GetByTipo(@PathVariable String tipo){
-		return ResponseEntity.ok(repository.findAllByTipoContainingIgnoreCase(tipo));
-		}
+
 		
 		
 		//Método para incluir dados

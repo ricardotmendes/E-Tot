@@ -13,12 +13,10 @@ import com.projetointegrador.Ecommerce.model.Categoria;
 
 
 public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
-	//Método importado de buscar por "Nome"  
+	//Método importado de buscar por "titulo"  
 
-	public List <Categoria> findAllByNomeContainingIgnoreCase (String nome);
+	public List <Categoria> findAllByTituloContainingIgnoreCase (String titulo);
 	
-	//Método importado de buscar por "Tipo"
-	
-	public List <Categoria> findAllByTipoContainingIgnoreCase (String tipo);
+
 		
 }
