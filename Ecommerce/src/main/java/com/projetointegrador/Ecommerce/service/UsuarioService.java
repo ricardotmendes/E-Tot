@@ -48,6 +48,7 @@ public Optional<Usuario> CadastrarUsuario(Usuario usuario) {
 				user.get().setToken(authHeader);				
 				user.get().setUsuario(usuario.get().getUsuario());
 				user.get().setSenha(usuario.get().getSenha());
+				user.get().setTipo(usuario.get().getTipo());
 
 				return user;
 

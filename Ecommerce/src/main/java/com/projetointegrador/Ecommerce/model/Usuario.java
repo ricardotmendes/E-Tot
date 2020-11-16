@@ -13,12 +13,11 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "tb_Usuario")
 public class Usuario {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	
-	
+			
 	@NotNull
 	@Size(min = 2, max = 255)
 	private String nome;
@@ -30,6 +29,10 @@ public class Usuario {
 	@NotNull
 	@Size(min = 5, max = 100)
 	private String usuario;
+	
+	@NotNull
+	@Size(min = 2, max = 255)
+	private String tipo;
 	
 	@NotNull
 	@Size(min = 2, max = 255)
@@ -68,6 +71,17 @@ public class Usuario {
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+	
+	
+
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getSenha() {

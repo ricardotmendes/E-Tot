@@ -33,10 +33,13 @@ public class Produto {
 	private String professor;
 	
 	@NotNull
-	@Size(min = 2, max = 255)
+	@Size(min = 2, max = 555)
 	private String descricao;
 
-
+	@NotNull
+	private double preco;
+	
+	
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
@@ -81,6 +84,16 @@ public class Produto {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	
+	
+
+	public double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(double preco) {
+		this.preco = preco;
 	}
 
 	public Categoria getCategoria() {
